@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProductFlow.Core.Application\ProductFlow.Core.Application.csproj" />
+    <ProjectReference Include="..\ProductFlow.Core.Domain.Service\ProductFlow.Core.Domain.Service.csproj" />
+    <ProjectReference Include="..\ProductFlow.Core.Domain\ProductFlow.Core.Domain.csproj" />
+    <ProjectReference Include="..\ProductFlow.Core.Infra.Dao\ProductFlow.Core.Infra.Dao.csproj" />
+    <ProjectReference Include="..\ProductFlow.Core.Infra.Storage\ProductFlow.Core.Infra.Storage.csproj" />
+  </ItemGroup>
+
+</Project>
