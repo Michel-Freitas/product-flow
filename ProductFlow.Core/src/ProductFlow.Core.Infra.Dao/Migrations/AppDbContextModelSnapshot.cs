@@ -52,8 +52,8 @@ namespace ProductFlow.Core.Infra.Dao.Migrations
                         .HasColumnType("varchar(280)")
                         .HasColumnName("path");
 
-                    b.Property<int>("SizeByte")
-                        .HasColumnType("integer")
+                    b.Property<long>("SizeByte")
+                        .HasColumnType("bigint")
                         .HasColumnName("size_byte");
 
                     b.Property<string>("Status")

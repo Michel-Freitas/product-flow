@@ -1,4 +1,5 @@
-﻿using Minio;
+﻿using Microsoft.Extensions.Options;
+using Minio;
 using Minio.DataModel.Args;
 using Minio.Exceptions;
 using ProductFlow.Core.Infra.Storage.Configurations;
@@ -9,10 +10,10 @@ namespace ProductFlow.Core.Infra.Storage.Service
 {
     public class StorageService(
         IMinioClient client,
-        StorageConfigurations storageConfig
+        IOptions<StorageConfigurations> storageConfig
     ) : IStorageService
     {
-        private readonly Dictionary<BucketsEnum, string> _buckets = storageConfig.BucketNames;
+        private readonly Dictionary<BucketsEnum, string> _buckets = storageConfig.Value.BucketNames;
 
         public async Task DeleteFile(BucketsEnum bucket, string key)
         {

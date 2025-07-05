@@ -13,7 +13,7 @@ namespace ProductFlow.Core.Domain.Service.Service
             string name = Path.GetFileNameWithoutExtension(fileName);
             string extension = Path.GetExtension(fileName);
             string dateTime = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            return $"{name}_{dateTime}.{extension}";
+            return $"{name}_{dateTime}{extension}";
         }
 
         public FileExtensionEnum GetFileExtension(string fileName)

@@ -1,15 +1,18 @@
-﻿using Minio;
+﻿using Microsoft.Extensions.Options;
+using Minio;
 
 namespace ProductFlow.Core.Infra.Storage.Configurations
 {
-    public class StorageFactory(StorageConfigurations storageConfig)
+    public class StorageFactory(IOptions<StorageConfigurations> storageConfig)
     {
+        private readonly StorageConfigurations _config = storageConfig.Value;
+
         public IMinioClient Create()
         {
             return new MinioClient()
-                .WithEndpoint(storageConfig.Endpoint, storageConfig.Port)
-                .WithCredentials(storageConfig.AcessKey, storageConfig.SecretKey)
-                .WithSSL(storageConfig.UseSSL)
+                .WithEndpoint(_config.Endpoint, _config.Port)
+                .WithCredentials(_config.AcessKey, _config.SecretKey)
+                .WithSSL(_config.UseSSL)
                 .Build();
         }
     }

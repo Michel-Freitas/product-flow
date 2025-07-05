@@ -12,7 +12,7 @@ using ProductFlow.Core.Infra.Dao.Context;
 namespace ProductFlow.Core.Infra.Dao.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250621063857_Initial")]
+    [Migration("20250702195453_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -55,8 +55,8 @@ namespace ProductFlow.Core.Infra.Dao.Migrations
                         .HasColumnType("varchar(280)")
                         .HasColumnName("path");
 
-                    b.Property<int>("SizeByte")
-                        .HasColumnType("integer")
+                    b.Property<long>("SizeByte")
+                        .HasColumnType("bigint")
                         .HasColumnName("size_byte");
 
                     b.Property<string>("Status")

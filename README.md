@@ -29,9 +29,7 @@ O projeto segue os princípios da **Clean Architecture**, utiliza **DDD (Domain-
 
 ## 🧠 Visão Geral da Arquitetura
 
-```
-EM CONSTRUÇÃO
-```
+![Arquitetura](./docs/images/Arquitecture_v1.png)
 
 ## 🏛️ Arquitetura do Projeto
 
