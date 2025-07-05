@@ -34,7 +34,7 @@ namespace ProductFlow.Core.Infra.Dao.Migrations
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     name = table.Column<string>(type: "varchar(180)", maxLength: 180, nullable: false),
-                    size_byte = table.Column<int>(type: "integer", nullable: false),
+                    size_byte = table.Column<long>(type: "bigint", nullable: false),
                     total_row = table.Column<int>(type: "integer", nullable: false),
                     path = table.Column<string>(type: "varchar(280)", maxLength: 280, nullable: false),
                     extension = table.Column<string>(type: "text", nullable: false),

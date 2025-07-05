@@ -17,6 +17,7 @@
     <ProjectReference Include="..\ProductFlow.Core.Domain.Service\ProductFlow.Core.Domain.Service.csproj" />
     <ProjectReference Include="..\ProductFlow.Core.Domain\ProductFlow.Core.Domain.csproj" />
     <ProjectReference Include="..\ProductFlow.Core.Infra.Dao\ProductFlow.Core.Infra.Dao.csproj" />
+    <ProjectReference Include="..\ProductFlow.Core.Infra.MessageBroker\ProductFlow.Core.Infra.MessageBroker.csproj" />
     <ProjectReference Include="..\ProductFlow.Core.Infra.Storage\ProductFlow.Core.Infra.Storage.csproj" />
   </ItemGroup>
 

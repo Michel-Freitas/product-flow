@@ -3,7 +3,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Minio;
 using ProductFlow.Core.Application.Model;
 using ProductFlow.Core.Application.UseCase.Files.UploadFile;
 using ProductFlow.Core.Domain.Interfaces.Repository;
@@ -12,9 +11,8 @@ using ProductFlow.Core.Domain.Service.Service;
 using ProductFlow.Core.Infra.Dao.Context;
 using ProductFlow.Core.Infra.Dao.Repository;
 using ProductFlow.Core.Infra.Dao.UnitOfWork;
-using ProductFlow.Core.Infra.Storage.Configurations;
-using ProductFlow.Core.Infra.Storage.Interface;
-using ProductFlow.Core.Infra.Storage.Service;
+using ProductFlow.Core.Infra.MessageBroker.DI;
+using ProductFlow.Core.Infra.Storage.DI;
 
 namespace ProductFlow.Core.Infra.DI
 {
@@ -24,12 +22,13 @@ namespace ProductFlow.Core.Infra.DI
         {
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
-            services.AddDependencyStorage(configuration);
             services.AddDependencyDbContext(configuration);
             services.AddDependencyAppService();
             services.AddDependencyService();
             services.AddDependencyRepository();
 
+            services.AddDependencyStorage(configuration);
+            services.AddDependencyMessageBroker(configuration);
         }
 
         private static void AddDependencyDbContext(this IServiceCollection services, IConfiguration configuration)
@@ -58,15 +57,6 @@ namespace ProductFlow.Core.Infra.DI
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IFileRepository, FileRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
-        }
-
-        private static void AddDependencyStorage(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddSingleton(configuration.GetSection("Storage").Get<StorageConfigurations>());
-            services.AddSingleton<StorageFactory>();
-            services.AddSingleton<IMinioClient>(options => options.GetRequiredService<StorageFactory>().Create());
-
-            services.AddScoped<IStorageService, StorageService>();
         }
     }
 }
