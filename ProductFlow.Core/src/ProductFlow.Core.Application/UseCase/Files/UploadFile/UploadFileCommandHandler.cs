@@ -25,18 +25,20 @@ namespace ProductFlow.Core.Application.UseCase.Files.UploadFile
             {
                 var user = await unitOfWork.UserRepository.GetByEmailAsync(request.Email);
 
-                if (user == null) {
-                    user = await userService.InsertAsync(new(name: request.Username, email: request.Email));
-                    await unitOfWork.SaveChangesAsync();
-                }                    
+                if (user == null)
+                {
+                    user = new(name: request.Username, email: request.Email);
+                    await userService.InsertAsync(user);
+                }
 
-                var fileEntity = await fileService.InsertAsync(new (
+                var fileEntity = await fileService.InsertAsync(new(
                     name: request.File.FileName,
                     extension: fileService.GetFileExtension(request.File.FileName),
                     sizeByte: request.File.Length,
                     path: path,
                     userId: user.Id
                 ));
+                fileEntity.User = user;
 
                 await storageService.UploadFile(
                     bucket: Infra.Storage.Enums.BucketsEnum.ProductFlow,
@@ -46,15 +48,14 @@ namespace ProductFlow.Core.Application.UseCase.Files.UploadFile
                 );
 
                 await unitOfWork.CommitAsync();
-
-                await brokerService.PublishAsync< FileUploadedEventDto>(EventsBrokerTopic.FileUploaded, new (fileEntity.Id));
+                await brokerService.PublishAsync<FileUploadedEventDto>(EventsBrokerTopic.FileUploaded, new(fileEntity.Id));
 
                 return new DefaulResult($"Vamos Processar o arquivo {request.File.FileName}");
             }
             catch
             {
-                await unitOfWork.RollbackAsync();
                 await storageService.DeleteFile(Infra.Storage.Enums.BucketsEnum.ProductFlow, path);
+                await unitOfWork.RollbackAsync();
                 throw;
             }
         }
