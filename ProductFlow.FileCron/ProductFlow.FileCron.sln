@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductFlow.FileCron", "ProductFlow.FileCron\ProductFlow.FileCron.csproj", "{B4EF867A-64A9-4876-86C2-1BB5488A3430}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4EF867A-64A9-4876-86C2-1BB5488A3430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4EF867A-64A9-4876-86C2-1BB5488A3430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4EF867A-64A9-4876-86C2-1BB5488A3430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4EF867A-64A9-4876-86C2-1BB5488A3430}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC1F36A1-5D79-4BFF-B89B-7C8A75816953}
+	EndGlobalSection
+EndGlobal
