@@ -1,19 +1,19 @@
 using Microsoft.Extensions.Options;
-using ProductFlow.FileCron.Infraestructure.MessageBroker.Dto;
-using ProductFlow.FileCron.Infraestructure.MessageBroker.Interface;
-using ProductFlow.FileCron.Infraestructure.MessageBroker.Settings;
-using ProductFlow.FileCron.UseCase.ProcessFile.Dto;
-using ProductFlow.FileCron.UseCase.ProcessFile.Interface;
+using ProductFlow.ProcessBatchCron.Infraestructure.MessageBroker.Dto;
+using ProductFlow.ProcessBatchCron.Infraestructure.MessageBroker.Interface;
+using ProductFlow.ProcessBatchCron.Infraestructure.MessageBroker.Settings;
+using ProductFlow.ProcessBatchCron.UseCase.ProcessBatch.Interface;
 
-namespace ProductFlow.FileCron
+namespace ProductFlow.ProcessBatchCron
 {
     public class Worker(
         ILogger<Worker> logger,
         IMessageBrokerService brokerService,
-        IProcessFileService processFileService,
+        IProcessBatchService processBatchService,
         IOptions<MessageBrokerSettings> options
     ) : BackgroundService
     {
+
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             brokerService.Subscribe(options.Value.Consumer.TopicName);
@@ -22,8 +22,8 @@ namespace ProductFlow.FileCron
             {
                 try
                 {
-                    var message = brokerService.Consume<EventDto<FileUploadedEventDto>>();
-                    await processFileService.ExecuteAsyn(message);
+                    var message = brokerService.Consume<EventDto<List<string>>>();
+                    await processBatchService.ExecuteAsyn(message);
                     brokerService.Commit();
                 }
                 catch

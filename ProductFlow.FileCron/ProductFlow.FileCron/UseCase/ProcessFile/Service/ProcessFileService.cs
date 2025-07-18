@@ -37,7 +37,7 @@ namespace ProductFlow.FileCron.UseCase.ProcessFile.Service
                 if (buffer.Count == 500) // TODO: - Valor deve ser implementado no Appsettings
                 {
                     // TODO: Salvar no banco os dados do batch enviado para processamento futuro caso trave o processo
-                    await brokerService.PublishAsync<List<string>>(EventsBrokerTopic.FileBatches, buffer);
+                    await brokerService.PublishAsync<List<string>>(EventsBrokerTopic.BatchUploaded, buffer);
                     buffer.Clear();
                 }
             }
@@ -45,7 +45,7 @@ namespace ProductFlow.FileCron.UseCase.ProcessFile.Service
             if (buffer.Count > 0)
             {
                 // TODO: Salvar no banco os dados do batch enviado para processamento futuro caso trave o processo
-                await brokerService.PublishAsync<List<string>>(EventsBrokerTopic.FileBatches, buffer);
+                await brokerService.PublishAsync<List<string>>(EventsBrokerTopic.BatchUploaded, buffer);
                 buffer.Clear();
             }
         }

@@ -3,6 +3,6 @@
     public static class EventsBrokerTopic
     {
         public const string FileUploaded = "file-uploaded";
-        public const string FileBatches = "file-batches";
+        public const string BatchUploaded = "batch-uploaded";
     }
 }
