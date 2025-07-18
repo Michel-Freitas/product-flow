@@ -2,8 +2,8 @@
 {
     public class EventMetadataDto
     {
-        public Guid EventId { get; set; }
-        public string Source { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; set; }
+        public Guid EventId { get; set; } = Guid.NewGuid();
+        public string Source { get; set; } = System.Reflection.Assembly.GetEntryAssembly()?.GetName()?.Name ?? string.Empty;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }
