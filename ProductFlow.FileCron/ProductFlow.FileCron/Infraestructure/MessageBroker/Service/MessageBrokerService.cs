@@ -17,7 +17,7 @@ namespace ProductFlow.FileCron.Infraestructure.MessageBroker.Service
                 BootstrapServers = options.Value.Endpoint,
                 GroupId = options.Value.Consumer.GroupId,
                 AutoOffsetReset = AutoOffsetReset.Earliest,
-                EnableAutoCommit = options.Value.Consumer.EnableAutoCommit
+                // EnableAutoCommit = options.Value.Consumer.EnableAutoCommit
             };
 
             _consumer = new ConsumerBuilder<Ignore, string>(config).Build();
