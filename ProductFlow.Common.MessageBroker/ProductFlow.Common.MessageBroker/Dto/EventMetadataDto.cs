@@ -1,4 +1,4 @@
-﻿namespace ProductFlow.Core.Infra.MessageBroker.Dto
+﻿namespace ProductFlow.Common.MessageBroker.Dto
 {
     public class EventMetadataDto
     {

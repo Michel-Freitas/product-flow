@@ -1,4 +1,4 @@
-﻿namespace ProductFlow.FileCron.Infraestructure.MessageBroker.Settings
+﻿namespace ProductFlow.FileCron.Common
 {
     public static class EventsBrokerTopic
     {

@@ -1,4 +1,4 @@
-﻿using ProductFlow.FileCron.Infraestructure.MessageBroker.Dto;
+﻿using ProductFlow.Common.MessageBroker.Dto;
 using ProductFlow.FileCron.UseCase.ProcessFile.Dto;
 
 namespace ProductFlow.FileCron.UseCase.ProcessFile.Interface

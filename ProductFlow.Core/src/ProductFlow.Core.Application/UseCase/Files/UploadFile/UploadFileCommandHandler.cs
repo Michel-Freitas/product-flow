@@ -6,7 +6,7 @@ using ProductFlow.Core.Application.EventsBroker.Topics;
 using ProductFlow.Core.Application.Model;
 using ProductFlow.Core.Domain.Interfaces.Repository;
 using ProductFlow.Core.Domain.Interfaces.Service;
-using ProductFlow.Core.Infra.MessageBroker.Interface;
+using ProductFlow.Common.MessageBroker.Interface;
 
 namespace ProductFlow.Core.Application.UseCase.Files.UploadFile
 {

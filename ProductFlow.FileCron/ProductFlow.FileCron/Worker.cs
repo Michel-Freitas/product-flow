@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Options;
-using ProductFlow.FileCron.Infraestructure.MessageBroker.Dto;
-using ProductFlow.FileCron.Infraestructure.MessageBroker.Interface;
-using ProductFlow.FileCron.Infraestructure.MessageBroker.Settings;
+using ProductFlow.Common.MessageBroker.Configurations;
+using ProductFlow.Common.MessageBroker.Dto;
+using ProductFlow.Common.MessageBroker.Interface;
 using ProductFlow.FileCron.UseCase.ProcessFile.Dto;
 using ProductFlow.FileCron.UseCase.ProcessFile.Interface;
 
@@ -11,11 +11,12 @@ namespace ProductFlow.FileCron
         ILogger<Worker> logger,
         IMessageBrokerService brokerService,
         IProcessFileService processFileService,
-        IOptions<MessageBrokerSettings> options
+        IOptions<MessageBrokerConfigurations> options
     ) : BackgroundService
     {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            Console.WriteLine($"***** Starting Reading the Topic {options.Value.Consumer.TopicName} *****");
             brokerService.Subscribe(options.Value.Consumer.TopicName);
 
             while (!stoppingToken.IsCancellationRequested)

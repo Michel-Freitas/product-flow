@@ -1,5 +1,5 @@
-﻿using System.Reflection;
-using MediatR;
+﻿using MediatR;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +12,7 @@ using ProductFlow.Core.Domain.Service.Service;
 using ProductFlow.Core.Infra.Dao.Context;
 using ProductFlow.Core.Infra.Dao.Repository;
 using ProductFlow.Core.Infra.Dao.UnitOfWork;
-using ProductFlow.Core.Infra.MessageBroker.DI;
+using ProductFlow.Common.MessageBroker.DI;
 
 namespace ProductFlow.Core.Infra.DI
 {
@@ -20,6 +20,7 @@ namespace ProductFlow.Core.Infra.DI
     {
         public static void AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddDependencyMessageBroker(configuration);
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
             services.AddDependencyDbContext(configuration);
@@ -28,7 +29,6 @@ namespace ProductFlow.Core.Infra.DI
             services.AddDependencyRepository();
 
             services.AddDependencyStorage(configuration);
-            services.AddDependencyMessageBroker(configuration);
         }
 
         private static void AddDependencyDbContext(this IServiceCollection services, IConfiguration configuration)
