@@ -1,4 +1,4 @@
-﻿namespace ProductFlow.FileCron.Infraestructure.Storage.Enums
+﻿namespace ProductFlow.Common.Storage.Enums
 {
     public enum BucketsEnum
     {

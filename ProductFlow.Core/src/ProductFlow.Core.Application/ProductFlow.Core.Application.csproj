@@ -11,12 +11,12 @@
     <PackageReference Include="MediatR" Version="12.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="ProductFlow.Common.Storage" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ProductFlow.Core.Domain\ProductFlow.Core.Domain.csproj" />
     <ProjectReference Include="..\ProductFlow.Core.Infra.MessageBroker\ProductFlow.Core.Infra.MessageBroker.csproj" />
-    <ProjectReference Include="..\ProductFlow.Core.Infra.Storage\ProductFlow.Core.Infra.Storage.csproj" />
   </ItemGroup>
 
 </Project>

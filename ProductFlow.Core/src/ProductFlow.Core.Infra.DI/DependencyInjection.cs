@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProductFlow.Common.Storage.DI;
 using ProductFlow.Core.Application.Model;
 using ProductFlow.Core.Application.UseCase.Files.UploadFile;
 using ProductFlow.Core.Domain.Interfaces.Repository;
@@ -12,7 +13,6 @@ using ProductFlow.Core.Infra.Dao.Context;
 using ProductFlow.Core.Infra.Dao.Repository;
 using ProductFlow.Core.Infra.Dao.UnitOfWork;
 using ProductFlow.Core.Infra.MessageBroker.DI;
-using ProductFlow.Core.Infra.Storage.DI;
 
 namespace ProductFlow.Core.Infra.DI
 {

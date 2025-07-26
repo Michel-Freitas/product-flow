@@ -1,11 +1,11 @@
-﻿using ProductFlow.Core.Infra.Storage.Interface;
-using ProductFlow.Core.Infra.Storage.Service;
-using ProductFlow.Core.Infra.Storage.Configurations;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
+using ProductFlow.Common.Storage.Configurations;
+using ProductFlow.Common.Storage.Interface;
+using ProductFlow.Common.Storage.Service;
 using Minio;
 
-namespace ProductFlow.Core.Infra.Storage.DI
+namespace ProductFlow.Common.Storage.DI
 {
     public static class DependencyInjection
     {
@@ -14,8 +14,7 @@ namespace ProductFlow.Core.Infra.Storage.DI
             services.Configure<StorageConfigurations>(configuration.GetSection("Storage"));
             services.AddSingleton<StorageFactory>();
             services.AddSingleton<IMinioClient>(options => options.GetRequiredService<StorageFactory>().Create());
-
-            services.AddScoped<IStorageService, StorageService>();
+            services.AddSingleton<IStorageService, StorageService>();
         }
     }
 }

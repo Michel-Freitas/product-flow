@@ -1,6 +1,6 @@
-﻿using ProductFlow.Core.Infra.Storage.Enums;
+﻿using ProductFlow.Common.Storage.Enums;
 
-namespace ProductFlow.Core.Infra.Storage.Configurations
+namespace ProductFlow.Common.Storage.Configurations
 {
     public class StorageConfigurations
     {
@@ -9,6 +9,7 @@ namespace ProductFlow.Core.Infra.Storage.Configurations
         public string AcessKey { get; set; }
         public string SecretKey { get; set; }
         public bool UseSSL { get; set; }
+        public string PathDownload {  get; set; }
         public Dictionary<string, string> Buckets { get; set; }
 
         public Dictionary<BucketsEnum, string> BucketNames =>

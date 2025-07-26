@@ -1,9 +1,9 @@
-﻿using ProductFlow.FileCron.Domain.Interface.Repository;
+﻿using ProductFlow.Common.Storage.Enums;
+using ProductFlow.Common.Storage.Interface;
+using ProductFlow.FileCron.Domain.Interface.Repository;
 using ProductFlow.FileCron.Infraestructure.MessageBroker.Dto;
 using ProductFlow.FileCron.Infraestructure.MessageBroker.Interface;
 using ProductFlow.FileCron.Infraestructure.MessageBroker.Settings;
-using ProductFlow.FileCron.Infraestructure.Storage.Enums;
-using ProductFlow.FileCron.Infraestructure.Storage.Interface;
 using ProductFlow.FileCron.UseCase.ProcessFile.Dto;
 using ProductFlow.FileCron.UseCase.ProcessFile.Interface;
 

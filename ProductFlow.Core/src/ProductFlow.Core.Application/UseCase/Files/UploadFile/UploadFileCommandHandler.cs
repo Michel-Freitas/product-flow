@@ -1,11 +1,12 @@
 ﻿using MediatR;
+using ProductFlow.Common.Storage.Interface;
+using ProductFlow.Common.Storage.Enums;
 using ProductFlow.Core.Application.EventsBroker.Dto;
 using ProductFlow.Core.Application.EventsBroker.Topics;
 using ProductFlow.Core.Application.Model;
 using ProductFlow.Core.Domain.Interfaces.Repository;
 using ProductFlow.Core.Domain.Interfaces.Service;
 using ProductFlow.Core.Infra.MessageBroker.Interface;
-using ProductFlow.Core.Infra.Storage.Interface;
 
 namespace ProductFlow.Core.Application.UseCase.Files.UploadFile
 {
@@ -41,7 +42,7 @@ namespace ProductFlow.Core.Application.UseCase.Files.UploadFile
                 fileEntity.User = user;
 
                 await storageService.UploadFile(
-                    bucket: Infra.Storage.Enums.BucketsEnum.ProductFlow,
+                    bucket: BucketsEnum.ProductFlow,
                     key: fileEntity.Path,
                     file: request.File.OpenReadStream(),
                     contentType: request.File.ContentType
@@ -54,7 +55,7 @@ namespace ProductFlow.Core.Application.UseCase.Files.UploadFile
             }
             catch
             {
-                await storageService.DeleteFile(Infra.Storage.Enums.BucketsEnum.ProductFlow, path);
+                await storageService.DeleteFile(BucketsEnum.ProductFlow, path);
                 await unitOfWork.RollbackAsync();
                 throw;
             }

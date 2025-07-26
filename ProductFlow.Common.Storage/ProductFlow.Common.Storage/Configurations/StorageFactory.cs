@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Minio;
 
-namespace ProductFlow.Core.Infra.Storage.Configurations
+namespace ProductFlow.Common.Storage.Configurations
 {
     public class StorageFactory(IOptions<StorageConfigurations> storageConfig)
     {
